@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:riverpod_demo/provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_demo/provider.dart';
+import 'package:riverpod_demo/screens/main_screen.dart';
 
 class DetailScreen extends ConsumerStatefulWidget {
   const DetailScreen({super.key});
@@ -18,6 +19,17 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        leading: GestureDetector(
+          onTap:() { Navigator.pushNamed(context, MyHomePage.routeName);
+          setState(() {
+            
+          });},
+          child: Icon(
+            Icons.arrow_back
+        
+            
+          ),
+        ),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Detail'),
       ),
@@ -36,8 +48,8 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
             ElevatedButton(
               onPressed: () {
                 setState(() {
-                  // FIXME: The counter is not updated in the main screen
                   counterProv.resetCounter();
+                  
                 });
               },
               child: const Text('Clear Data'),
